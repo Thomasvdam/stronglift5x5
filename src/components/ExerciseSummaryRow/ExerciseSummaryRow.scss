@@ -1,0 +1,31 @@
+.exercise-summary {
+    &--container {
+        display: flex;
+        justify-content: flex-start;
+        margin-bottom: 5px;
+    }
+
+    &--name {
+        width: 50%;
+    }
+}
+
+.exercise-status {
+    &--container {
+        display: flex;
+        justify-content: space-between;
+        width: 50%;
+    }
+
+    &--open::before {
+        content: '\02754';
+    }
+
+    &--completed::before {
+        content: '\0274C';
+    }
+
+    &--failed::before {
+        content: '\02705';
+    }
+}

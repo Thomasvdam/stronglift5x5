@@ -1,0 +1,22 @@
+.progress-bar {
+    height: 20px;
+    display: flex;
+    justify-content: space-between;
+
+    &--part {
+        height: 100%;
+        width: 100%;
+
+        &--open {
+            background-color: grey;
+        }
+
+        &--completed {
+            background-color: green;
+        }
+
+        &--failed {
+            background-color: red;
+        }
+    }
+}

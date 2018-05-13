@@ -1,0 +1,26 @@
+{
+  "name": "stronglift-5x5",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "cross-env NODE_ENV=development parcel index.html ",
+    "build": "cross-env NODE_ENV=production parcel build index.html"
+  },
+  "author": "Thomas van Dam",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/react": "^16.3.14",
+    "@types/react-dom": "^16.0.5",
+    "@types/react-redux": "^6.0.0",
+    "cross-env": "^5.1.5",
+    "node-sass": "^4.9.0",
+    "typescript": "^2.8.3"
+  },
+  "dependencies": {
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "react-redux": "^5.0.7",
+    "redux": "^4.0.0"
+  }
+}

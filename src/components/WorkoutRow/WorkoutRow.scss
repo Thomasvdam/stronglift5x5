@@ -1,0 +1,14 @@
+.workout {
+    &--row {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    &--done {
+        opacity: 0.5;
+    }
+
+    &--number {
+        font-size: 1.5rem;
+    }
+}
