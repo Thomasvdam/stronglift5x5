@@ -8,9 +8,15 @@ export interface Set {
     status: Status;
 }
 
+export interface ExerciseHistory {
+    weight: number;
+    status: Status;
+}
+
 export interface Exercise {
     name: string,
     weight: number;
+    history: ExerciseHistory[];
 }
 
 export interface WorkoutPart {
@@ -30,17 +36,24 @@ export interface Session {
     workouts: Workout[];
 }
 
-export interface ExerciseSummary {
-    exercise: Exercise;
-    summary: Status[];
-}
-
 export interface SessionOverview {
     name: string;
     active: boolean;
-    exercises: ExerciseSummary[];
+    exercises: Exercise[];
 }
 
 export interface AppState {
     exercise: Exercise;
+}
+
+// Development globals
+declare global {
+    interface Window {
+        store: any;
+        __REDUX_DEVTOOLS_EXTENSION__: any;
+    }
+
+    interface NodeModule {
+        hot: any;
+    }
 }

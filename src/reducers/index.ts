@@ -16,3 +16,4 @@ export function weight(state: AppState, action: WeightAction): AppState {
     }
 
     return state;
+}

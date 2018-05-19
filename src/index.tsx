@@ -14,27 +14,52 @@ import configureStore from './store';
 
 const squat:Exercise = {
   name: 'Squat',
-  weight: 95,
+  weight: 100,
+  history: [
+    { weight: 97.5, status: Status.Completed },
+    { weight: 95, status: Status.Completed },
+    { weight: 92.5, status: Status.Completed },
+  ]
 };
 
 const benchPress:Exercise = {
   name: 'Bench Press',
   weight: 85,
+  history: [
+    { weight: 82.5, status: Status.Completed },
+    { weight: 80, status: Status.Completed },
+    { weight: 0, status: Status.Open },
+  ]
 };
 
 const barbellRow:Exercise = {
   name: 'Barbell Row',
   weight: 55,
+  history: [
+    { weight: 52.5, status: Status.Completed },
+    { weight: 50, status: Status.Completed },
+    { weight: 0, status: Status.Open },
+  ]
 };
 
 const ohp:Exercise = {
   name: 'OHP',
-  weight: 32.5,
+  weight: 35,
+  history: [
+    { weight: 32.5, status: Status.Completed },
+    { weight: 30, status: Status.Completed },
+    { weight: 0, status: Status.Open },
+  ]
 };
 
 const deadlift:Exercise = {
   name: 'Deadlift',
-  weight: 100,
+  weight: 105,
+  history: [
+    { weight: 100, status: Status.Completed },
+    { weight: 95, status: Status.Completed },
+    { weight: 0, status: Status.Open },
+  ]
 };
 
 const workoutPart:WorkoutPart = {
@@ -61,21 +86,13 @@ const workoutPart3:WorkoutPart = {
 const overview: SessionOverview = {
   name: 'A',
   active: true,
-  exercises: [
-    { exercise: squat, summary: [Status.Open, Status.Failed, Status.Completed]},
-    { exercise: benchPress, summary: [Status.Open, Status.Failed, Status.Completed]},
-    { exercise: barbellRow, summary: [Status.Open, Status.Failed, Status.Completed]},
-  ]
+  exercises: [squat, benchPress, barbellRow],
 }
 
 const overview2: SessionOverview = {
   name: 'B',
   active: false,
-  exercises: [
-    { exercise: squat, summary: [Status.Open, Status.Failed, Status.Completed]},
-    { exercise: ohp, summary: [Status.Open, Status.Failed, Status.Completed]},
-    { exercise: deadlift, summary: [Status.Open, Status.Failed, Status.Completed]},
-  ]
+  exercises: [squat, ohp, deadlift],
 }
 
 const store = configureStore({
@@ -113,7 +130,6 @@ ReactDOM.render(
 
 
 if (module.hot) {
-  module.hot.accept();
   module.hot.accept(() => {
       const nextRootReducer = require('./reducers/index').weight;
       store.replaceReducer(nextRootReducer);

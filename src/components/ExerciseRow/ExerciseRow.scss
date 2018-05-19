@@ -1,4 +1,32 @@
 .exercise-row {
     display: flex;
     justify-content: space-between;
+
+    &--name{
+        width: 25%;
+    }
+
+    &--weight {
+        width: 25%;
+    }
+}
+
+.exercise-status {
+    &--container {
+        display: flex;
+        justify-content: space-between;
+        width: 25%;
+    }
+
+    &--open::before {
+        content: '\02754';
+    }
+
+    &--completed::before {
+        content: '\02705';
+    }
+
+    &--failed::before {
+        content: '\0274C';
+    }
 }
