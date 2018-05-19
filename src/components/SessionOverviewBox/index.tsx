@@ -11,7 +11,7 @@ function SessionOverviewBox({ overview }: Props) {
         <div className={`session-overview--container ${overview.active ? 'active' : ''}`}>
             <h2>{overview.name}</h2>
             {overview.exercises.map((exercise, index) => (
-                <h4>{exercise.name}</h4>
+                <h4 key={index}>{exercise.name}</h4>
             ))}
         </div>
     )

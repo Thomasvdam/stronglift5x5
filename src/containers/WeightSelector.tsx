@@ -3,7 +3,7 @@ import WeightSelector from '../components/WeightSelector';
 import * as actions from '../actions';
 import { AppState } from '../types';
 
-export function mapStateToProps({ exercise }:AppState) {
+export function mapStateToProps({ exercise }: AppState) {
     return {
         exercise,
     }

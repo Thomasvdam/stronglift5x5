@@ -4,23 +4,29 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=development parcel index.html ",
+    "start": "cross-env NODE_ENV=development parcel index.html",
     "build": "cross-env NODE_ENV=production parcel build index.html"
   },
   "author": "Thomas van Dam",
   "license": "ISC",
   "devDependencies": {
+    "@types/history": "^4.6.2",
     "@types/react": "^16.3.14",
     "@types/react-dom": "^16.0.5",
     "@types/react-redux": "^6.0.0",
+    "@types/react-router": "^4.0.25",
+    "@types/react-router-redux": "^5.0.14",
     "cross-env": "^5.1.5",
     "node-sass": "^4.9.0",
     "typescript": "^2.8.3"
   },
   "dependencies": {
+    "history": "^4.7.2",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "react-redux": "^5.0.7",
+    "react-router": "^4.2.0",
+    "react-router-redux": "^5.0.0-alpha.9",
     "redux": "^4.0.0"
   }
 }

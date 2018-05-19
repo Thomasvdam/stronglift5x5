@@ -2,6 +2,11 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
+import createHistory from 'history/createBrowserHistory';
+import { Route } from 'react-router';
+
+import { ConnectedRouter, routerMiddleware, push } from 'react-router-redux';
+
 import './app.scss';
 
 
@@ -95,16 +100,16 @@ const overview2: SessionOverview = {
   exercises: [squat, ohp, deadlift],
 }
 
-const store = configureStore({
-  exercise: squat
-});
+const history = window.reactHistory || createHistory();
+window.reactHistory = history;
 
-const App = () => (
+const store = configureStore({
+  exercise: squat,
+}, history);
+
+const HomePage = () => (
   <div>
     <h1>Stronglift 5x5</h1>
-    <WorkoutRow workoutPart={workoutPart}></WorkoutRow>
-    <WorkoutRow workoutPart={workoutPart2}></WorkoutRow>
-    <WorkoutRow workoutPart={workoutPart3}></WorkoutRow>
     <div className="session-selector">
       <SessionOverviewBox overview={overview}></SessionOverviewBox>
       <SessionOverviewBox overview={overview2}></SessionOverviewBox>
@@ -116,22 +121,26 @@ const App = () => (
     <ExerciseRow exercise={barbellRow}></ExerciseRow>
     <ExerciseRow exercise={ohp}></ExerciseRow>
     <ExerciseRow exercise={deadlift}></ExerciseRow>
+  </div>
+);
 
-    <WeightSelector></WeightSelector>
+const WorkoutPage = () => (
+  <div>
+    <WorkoutRow workoutPart={workoutPart}></WorkoutRow>
+    <WorkoutRow workoutPart={workoutPart2}></WorkoutRow>
+    <WorkoutRow workoutPart={workoutPart3}></WorkoutRow>
   </div>
 );
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <ConnectedRouter history={history}>
+      <div>
+        <Route exact path='/' component={HomePage}></Route>
+        <Route path='/workout' component={WorkoutPage}></Route>
+        <Route path='/weightselector' component={WeightSelector}></Route>
+      </div>
+    </ConnectedRouter>
   </Provider>,
   document.getElementById('root')
 );
-
-
-if (module.hot) {
-  module.hot.accept(() => {
-      const nextRootReducer = require('./reducers/index').weight;
-      store.replaceReducer(nextRootReducer);
-  });
-}

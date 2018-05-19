@@ -50,7 +50,9 @@ export interface AppState {
 declare global {
     interface Window {
         store: any;
+        reactHistory: any;
         __REDUX_DEVTOOLS_EXTENSION__: any;
+        __REDUX_DEVTOOLS_EXTENSION_COMPOSE__: any;
     }
 
     interface NodeModule {
