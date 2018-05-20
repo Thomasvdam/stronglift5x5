@@ -104,7 +104,7 @@ const history = window.reactHistory || createHistory();
 window.reactHistory = history;
 
 const store = configureStore({
-  exercise: squat,
+  exercise: ohp,
 }, history);
 
 const HomePage = () => (
@@ -138,7 +138,7 @@ ReactDOM.render(
       <div>
         <Route exact path='/' component={HomePage}></Route>
         <Route path='/workout' component={WorkoutPage}></Route>
-        <Route path='/weightselector' component={WeightSelector}></Route>
+        <Route path='/weightselector/:exerciseId' component={WeightSelector}></Route>
       </div>
     </ConnectedRouter>
   </Provider>,

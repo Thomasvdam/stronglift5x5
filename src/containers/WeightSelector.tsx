@@ -1,18 +1,21 @@
 import { connect, Dispatch } from 'react-redux';
 import WeightSelector from '../components/WeightSelector';
-import * as actions from '../actions';
+import * as actions from '../actions/weightActions';
 import { AppState } from '../types';
 
-export function mapStateToProps({ exercise }: AppState) {
+export function mapStateToProps(state, ownProps) {
+    const {exercises} = state.entities;
+    const {exerciseId} = ownProps.match.params;
+
     return {
-        exercise,
+        exercise: exercises[exerciseId],
     }
 }
 
 export function mapDispatchToProps(dispatch: Dispatch<actions.WeightAction>) {
     return {
-        onIncrement: () => dispatch(actions.incrementWeight()),
-        onDecrement: () => dispatch(actions.decrementWeight()),
+        onIncrement: (id: number) => dispatch(actions.incrementWeight(id)),
+        onDecrement: (id: number) => dispatch(actions.decrementWeight(id)),
     }
 }
 

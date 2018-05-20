@@ -4,20 +4,21 @@ import { Exercise, Status } from '../../types';
 
 export interface Props {
     exercise?: Exercise;
-    onIncrement?: () => void;
-    onDecrement?: () => void;
+    onIncrement: (id: number) => void;
+    onDecrement: (id: number) => void;
 }
 
-function WeightSelector({ exercise, onDecrement, onIncrement }: Props) {
+function WeightSelector(props: Props) {
+    const {exercise, onDecrement, onIncrement} = props;
     if (!exercise) {
         return null;
     }
 
     return (
         <div className="weight-selector--container">
-            <button onClick={onDecrement}>-</button>
+            <button onClick={() => onDecrement(exercise.id)}>-</button>
             <span>{exercise.weight}</span>
-            <button onClick={onIncrement}>+</button>
+            <button onClick={() => onIncrement(exercise.id)}>+</button>
         </div>
     )
 }
